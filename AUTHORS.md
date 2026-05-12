@@ -2,11 +2,11 @@
 
 ## Creator and original author
 
-- **Per Gantelius** ([@stuffmatic](https://github.com/stuffmatic)) — per@stuffmatic.com
+- **Per Gantelius** ([@stuffmatic](https://github.com/stuffmatic))
 
 ## Contributors
 
+- **Darío Hereñú** ([@kant](https://github.com/kant))
+- **Tuk Bredsdorff** ([@tiktuk](https://github.com/tiktuk))
+- **Luis García-Tornel**
 - **Leon Zandman** ([@leonzandman](https://github.com/leonzandman))
-- **Darío Hereñú** ([@magallania](https://github.com/magallania))
-- **Luis García-Tornel** ([@tornel](https://github.com/tornel))
-- **Tuk Bredsdorff**
