@@ -1,19 +1,13 @@
 # 1.0.3
 
 * euler angles
-* overwrite warning does not use name with appended .fspy
 
 # Fix
-* cmd-s should trigger save-as for new project
 * add appropriate entries to the macos fSpy menu
 * Den kraschar när jag vill starta nytt projekt - Linux
 
-# build
-* silence test warning
-
 # linux
 * crisper icon (use nativeimage?)
-* name: fSpy instead of fspy
 
 # future
 * use transform() to scale bg image?

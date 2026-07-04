@@ -218,7 +218,9 @@ function createWindow() {
       onSaveProjectAs: () => {
         dialog.showSaveDialog(
           window,
-          {}
+          {
+            filters: [{ name: 'fSpy project', extensions: ['fspy'] }]
+          }
         ).then((result) => {
           if (!result.canceled && result.filePath !== undefined) {
             window.webContents.send(
@@ -420,7 +422,9 @@ function createWindow() {
     // TODO: DRY
     dialog.showSaveDialog(
       window,
-      {}
+      {
+        filters: [{ name: 'fSpy project', extensions: ['fspy'] }]
+      }
     ).then((result) => {
       if (!result.canceled && result.filePath) {
         window.webContents.send(

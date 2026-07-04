@@ -85,6 +85,7 @@
       "category": "public.app-category.utilities"
     },
     "linux": {
+      "executableName": "fSpy",
       "target": [
         "AppImage"
       ]
