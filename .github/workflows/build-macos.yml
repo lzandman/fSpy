@@ -1,0 +1,40 @@
+name: Build macOS
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build macOS (dmg)
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build renderer/main bundles
+        run: npm run build-dist
+
+      - name: Package macOS (dmg, x64 + arm64)
+        run: npx electron-builder --mac --x64 --arm64 --publish never
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Unsigned build: don't let electron-builder try to auto-discover a
+          # signing identity from the keychain (there isn't one on CI).
+          CSC_IDENTITY_AUTO_DISCOVERY: false
+
+      - name: Upload dmg
+        uses: actions/upload-artifact@v4
+        with:
+          name: fspy-macos-dmg
+          path: dist/*.dmg
+          if-no-files-found: error
