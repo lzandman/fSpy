@@ -14,10 +14,10 @@ Snapshot of `npm outdated` (as of 2026-07-04):
 | ~~eslint~~ | ~~8.57.1~~ | 10.6.0 | ✅ #2 done |
 | ~~@typescript-eslint/{eslint-plugin,parser}~~ | ~~7.18.0~~ | 8.62.1 | ✅ #2 done |
 | ~~typescript~~ | ~~5.9.3~~ | 6.0.3 | ✅ #3 done |
-| react / react-dom | 18.3.1 | 19.2.7 | #4 react 19 |
-| @types/react / @types/react-dom | 18.x | 19.x | #4 react 19 |
-| react-konva | 18.2.16 | 19.2.5 | #4 react 19 |
-| konva | 9.3.22 | 10.3.0 | #4 react 19 |
+| ~~react / react-dom~~ | ~~18.3.1~~ | 19.2.7 | ✅ #4 done |
+| ~~@types/react / @types/react-dom~~ | ~~18.x~~ | 19.x | ✅ #4 done |
+| ~~react-konva~~ | ~~18.2.16~~ | 19.2.5 | ✅ #4 done |
+| ~~konva~~ | ~~9.3.22~~ | 10.3.0 | ✅ #4 done |
 | vite | 7.3.6 | 8.1.3 | **blocked** (see bottom) |
 | @vitejs/plugin-react | 5.2.0 | 6.0.3 | **blocked** (see bottom) |
 
@@ -91,27 +91,33 @@ tolerate TS 6.0.x. Done *after* #2 so the new eslint stack lints the upgraded co
 * Verified from a clean state: `tsc --noEmit` clean (6.0.3), `npm test` (175 pass), `npx eslint .`
   exits 0, `npm run dist-preview` builds and the packaged `fSpy.app` launches and stays up.
 
-## 4. React 18 → 19 (largest — coupled ecosystem bump)
+## 4. ✅ DONE — React 18 → 19 (coupled ecosystem bump)
 
-All of these move together; react-konva 19.2.x peers on `react@^19.2` and `konva@^10`:
+The whole React stack moved together; react-konva 19.2.x peers on `react@^19.2`
+and `konva@^10`:
 
-* `react` + `react-dom` 18 → 19
-* `@types/react` + `@types/react-dom` 18 → 19
-* `react-konva` 18 → 19
-* `konva` 9 → 10
-
-Steps:
-1. `npm i react@19 react-dom@19 react-konva@19 konva@10`
-   `npm i -D @types/react@19 @types/react-dom@19`
-2. Work through React 19 breaking changes: stricter `useRef` (arg now required),
-   removed legacy APIs, `ReactDOM.render` → `createRoot` (verify the renderer entry
-   already uses `createRoot`), and updated `@types/react` 19 typings (ref-as-prop,
-   removed implicit `children`, `JSX` namespace moves). Expect the bulk of the work to be
-   `tsc` type errors from the new `@types/react`.
-3. Exercise the canvas-heavy GUI: react-konva 19 + konva 10 rendering, image loading,
-   control-point dragging, and the redux-connected views.
-* Verify: full typecheck + tests, then manually drive the app (load `example.fspy`,
-  move vanishing-point handles, export) in dev and packaged builds.
+* `npm i react@19 react-dom@19 react-konva@19 konva@10` (landed react/react-dom
+  19.2.7, react-konva 19.2.5, konva 10.3.0) plus
+  `npm i -D @types/react@19 @types/react-dom@19` (19.2.17 / 19.2.3). All peers
+  dedupe cleanly to react 19 — `react-redux 9`, `react-measure 2.5`, and
+  react-konva's `its-fine 2` / `react-reconciler 0.33` all resolve, `npm audit`
+  stays at 0 vulns.
+* Much smaller blast radius than feared — only **two** `tsc` errors, both in
+  `src/gui/components/common/dropdown.tsx`: React 19's `createRef<T>()` now returns
+  `RefObject<T | null>`, so the two `RefObject<HTMLDivElement>` field annotations had
+  to become `RefObject<HTMLDivElement | null>`. Both existing `.current` reads already
+  null-guard, so no logic changed. The renderer entry (`src/gui/index.tsx`) was already
+  on `createRoot`; no `ReactDOM.render`, `defaultProps`-on-function-components,
+  `propTypes`, or string-ref usage to migrate.
+* Verified from a clean state: `tsc --noEmit` clean, `npm test` (175 pass), `npx eslint .`
+  exits 0, `npm run build-dist` bundles. Then drove the **packaged** app
+  (`dist-preview`, where `example.fspy` is bundled as an extraResource) via Playwright
+  `_electron`: loaded the example project, confirmed the react-konva/konva canvas renders
+  the image + vanishing-point control points, the solver panel computes camera params
+  (FOV, position, orientation, focal length), and a vanishing-point handle drag runs — all
+  with **0** console/page errors. (Loading the example from the *unpackaged* `out/` build
+  no-ops because `getResourcePath` points into Electron's own resources; that's an
+  unpackaged-run artifact, not a regression — use the packaged app to exercise the canvas.)
 
 ## Blocked — do not attempt yet
 
