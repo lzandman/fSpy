@@ -30,6 +30,14 @@
     "eslint": "^8.57.1",
     "jest": "^29.7.0",
     "jest-junit": "^17.0.0",
+    "konva": "^9.3.22",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-konva": "^18.2.14",
+    "react-measure": "^2.5.2",
+    "react-redux": "^9.2.0",
+    "redux": "^5.0.1",
+    "redux-thunk": "^3.1.0",
     "ts-jest": "^29.4.9",
     "typescript": "^5.9.3",
     "vite": "^7.3.6"
@@ -47,15 +55,7 @@
   },
   "dependencies": {
     "electron-window-state": "^5.0.3",
-    "konva": "^9.3.22",
-    "minimist": "^1.2.8",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-konva": "^18.2.14",
-    "react-measure": "^2.5.2",
-    "react-redux": "^9.2.0",
-    "redux": "^5.0.1",
-    "redux-thunk": "^3.1.0"
+    "minimist": "^1.2.8"
   },
   "build": {
     "publish": {
