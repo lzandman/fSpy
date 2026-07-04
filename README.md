@@ -42,12 +42,51 @@ This builds the main, preload, and GUI code, starts the webpack dev server, and 
 
 ## Creating binaries for distribution
 
-To create executables for distribution, run
+Executables are produced by [Electron builder](https://github.com/electron-userland/electron-builder). Each `dist-*` script first runs a clean production build (`build-dist`) and then packages the app.
+
+To build for all platforms at once, run
 
 ```
 npm run dist
 ```
 
-which invokes [Electron builder](https://github.com/electron-userland/electron-builder).
+or build a single platform with `npm run dist-mac`, `npm run dist-win` or `npm run dist-linux`.
 
-⚠️ The `npm run dist` script builds for macOS, Windows, and Linux (`-mwl`). Building for macOS requires running on macOS. To build only for the current platform, run `npm run dist-preview` instead (output in `dist/` without packaging).
+⚠️ Cross-compiling from a single machine is unreliable. Packaging for macOS requires running on macOS, the Windows `nsis` target needs Wine, and the Linux `AppImage` target typically needs Docker/Linux. In practice, the all-platform `npm run dist` and `npm run publish-release` are meant to run on matching per-OS CI runners; locally, build only for the platform you are on. `npm run dist-mac` skips code signing, so it works on any Mac without a signing certificate.
+
+
+## npm scripts reference
+
+All available scripts and when to use them:
+
+### Development
+
+| Script | Description |
+| --- | --- |
+| `npm start` | Builds the app, starts the webpack dev server and launches Electron. Renderer (GUI) changes reload automatically; changes to `src/main` require a restart. This is the main development command. |
+| `npm test` | Runs the [Jest](https://jestjs.io) test suite. |
+
+### Building
+
+| Script | Description |
+| --- | --- |
+| `npm run build-dev` | Cleans `build/` and produces a development webpack bundle. Called by `npm start`; rarely run directly. |
+| `npm run build-dist` | Cleans `build/` and produces a production webpack bundle. Called automatically by every `dist-*` and `publish-release` script. |
+
+### Packaging (distribution)
+
+| Script | Description |
+| --- | --- |
+| `npm run dist-preview` | Produces an unpacked build (`electron-builder --dir`) for a quick local smoke test — faster than a full installer. |
+| `npm run dist` | Packages installers for macOS, Windows and Linux (`-mwl`). See the cross-compiling caveat above. |
+| `npm run dist-mac` | Packages a macOS build only, skipping code signing (works without a signing certificate). |
+| `npm run dist-win` | Packages a Windows build only. |
+| `npm run dist-linux` | Packages a Linux build only. |
+
+### Publishing
+
+| Script | Description |
+| --- | --- |
+| `npm run publish-release` | Builds and publishes installers for all platforms to GitHub Releases (`electron-builder --publish always`). Intended to run from CI on per-OS runners. |
+
+The internal helper scripts `dev-server` and `electron-dev` are invoked by `npm start` and are not normally run on their own.

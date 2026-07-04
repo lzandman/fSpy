@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-fSpy is a cross-platform Electron 42 desktop application for camera matching from still images. It uses React 18, Konva 9 / react-konva 18 for canvas rendering, Redux 5 for state management, and Webpack 5 for bundling. TypeScript 5.8 with strict mode. Licensed under GPL-3.0.
+fSpy is a cross-platform Electron 42 desktop application for camera matching from still images. It uses React 18, Konva 9 / react-konva 18 for canvas rendering, Redux 5 for state management, and Webpack 5 for bundling. TypeScript 5.9 with strict mode. Licensed under GPL-3.0.
 
 ## Architecture
 
@@ -11,6 +11,7 @@ fSpy is a cross-platform Electron 42 desktop application for camera matching fro
 - **Main process** (`src/main/index.ts`): Electron lifecycle, window management, IPC handlers, all file system access.
 - **Preload script** (`src/main/preload.ts`): Uses `contextBridge.exposeInMainWorld('electronAPI', ...)` to expose a typed API surface to the renderer. Kept minimal.
 - **Renderer** (`src/gui/`): React/Redux UI. Has **no** direct access to Node.js APIs or Electron internals — all system access goes through `window.electronAPI`.
+- **CLI** (`src/cli/cli.ts`): A headless mode for computing camera parameters without the GUI. It is not a separate binary — the Electron main process (`src/main/index.ts`) detects CLI arguments (`-w`, `-h`, `-s`, `-o`, `--help`) on launch and calls `CLI.run()` instead of creating a window, then exits. It reuses the solver and I/O code from `src/gui/` (e.g. `src/gui/solver/`, `src/gui/io/`) and is bundled into the `main` webpack bundle via that import.
 
 ### Security model
 
@@ -63,5 +64,11 @@ Webpack produces three bundles (see `webpack.config.js`):
 ## File Structure
 
 - Do not restructure the `src/` directory layout unless a dependency requires it.
+- `src/main/` — Electron main process and preload script. `src/gui/` — React/Redux renderer. `src/cli/` — command-line interface.
 - Preload script source: `src/main/preload.ts`.
 - Electron API type definitions: `src/gui/types/electron-api.ts`.
+
+## Documentation
+
+- Keep `README.md` up to date. When you change build tooling, npm scripts, the `src/` layout, or developer workflow, update `README.md` (especially its "Building and running" and "npm scripts reference" sections) to reflect the latest state.
+- Keep this `AGENTS.md` in sync with the project as well when architecture, security model, or conventions change.
