@@ -13,7 +13,7 @@ Snapshot of `npm outdated` (as of 2026-07-04):
 | ~~jest / @types/jest~~ | ~~29.x~~ | 30.x | ✅ #1 done |
 | ~~eslint~~ | ~~8.57.1~~ | 10.6.0 | ✅ #2 done |
 | ~~@typescript-eslint/{eslint-plugin,parser}~~ | ~~7.18.0~~ | 8.62.1 | ✅ #2 done |
-| typescript | 5.9.3 | 6.0.3 | #3 typescript 6 |
+| ~~typescript~~ | ~~5.9.3~~ | 6.0.3 | ✅ #3 done |
 | react / react-dom | 18.3.1 | 19.2.7 | #4 react 19 |
 | @types/react / @types/react-dom | 18.x | 19.x | #4 react 19 |
 | react-konva | 18.2.16 | 19.2.5 | #4 react 19 |
@@ -73,14 +73,23 @@ ESLint 8 was end-of-life, so this was the highest-value modernization here.
 Verified from a clean `npm ci`: `tsc --noEmit` clean, `npm test` (175 pass), `npx eslint .`
 exits 0 with **no** remaining problems.
 
-## 3. TypeScript 5.9 → 6.0
+## 3. ✅ DONE — TypeScript 5.9 → 6.0
 
 Not blocked — `ts-jest` allows `<7` and `typescript-eslint@8` allows `<6.1`, so both
-tolerate TS 6.0.x. Do it *after* #2 so the new eslint stack lints the upgraded compiler.
+tolerate TS 6.0.x. Done *after* #2 so the new eslint stack lints the upgraded compiler.
 
-* `npm i -D typescript@6`, then `npx tsc --noEmit` and fix any new strictness/removed-flag
-  errors. Check `tsconfig.json` for options deprecated/removed in TS 6.
-* Verify: typecheck clean, `npm test` green, dev + packaged build both work.
+* `npm i -D typescript@6` (landed 6.0.3). `ts-jest 29.4.9` and `typescript-eslint 8.62.1`
+  unchanged — both accept TS 6.
+* One new error: TS 6 added **TS2882** ("Cannot find module or type declarations for
+  side-effect import") for the untyped `import './index.css'` in `src/gui/index.tsx`. The
+  project had no ambient CSS-module declaration and never referenced Vite's client types.
+  Fixed the idiomatic Vite way by adding `src/gui/vite-env.d.ts` with
+  `/// <reference types="vite/client" />` — `vite/client` declares `*.css` (and `*.module.css`,
+  `import.meta.env`, etc.). Types-only, no runtime effect.
+* No `tsconfig.json` options were deprecated/removed by TS 6; `tsc --noEmit` runs clean with
+  no config warnings.
+* Verified from a clean state: `tsc --noEmit` clean (6.0.3), `npm test` (175 pass), `npx eslint .`
+  exits 0, `npm run dist-preview` builds and the packaged `fSpy.app` launches and stays up.
 
 ## 4. React 18 → 19 (largest — coupled ecosystem bump)
 
