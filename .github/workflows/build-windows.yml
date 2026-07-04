@@ -16,16 +16,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'yarn'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm ci
 
       - name: Build renderer/main bundles
-        run: yarn build-dist
+        run: npm run build-dist
 
       - name: Package Windows (NSIS installer + zip)
-        run: yarn electron-builder --win --x64 --publish never
+        run: npx electron-builder --win --x64 --publish never
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
