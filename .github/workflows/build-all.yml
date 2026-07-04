@@ -1,0 +1,16 @@
+name: Build All
+
+on:
+  workflow_dispatch:
+
+# Orchestrates the per-OS reusable workflows so a single run produces
+# macOS and Windows artifacts together. Each child workflow uploads its
+# own artifacts, which are collected under this run.
+jobs:
+  macos:
+    name: macOS
+    uses: ./.github/workflows/build-macos.yml
+
+  windows:
+    name: Windows
+    uses: ./.github/workflows/build-windows.yml
