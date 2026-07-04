@@ -37,7 +37,7 @@ export default function Checkbox(props: CheckboxProps) {
           onChange={(event: any) => {
             props.onChange(event.target.checked)
           }}
-      />
+        />
       </div>
     </div>
   )

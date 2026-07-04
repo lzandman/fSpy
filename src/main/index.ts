@@ -32,7 +32,7 @@ const PROJECT_FILE_ID = 'fspy'
 const EXAMPLE_PROJECT_FILENAME = 'example.fspy'
 
 function isProjectFile(filePath: string): boolean {
-  let file = 0
+  let file: number
   try {
     file = openSync(filePath, 'r')
   } catch {

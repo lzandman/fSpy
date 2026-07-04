@@ -245,7 +245,7 @@ export default class Dropdown<T> extends React.PureComponent<DropdownProps<T>, D
         this.scrollContainerRef.current.scrollTop = 0
       }
     },
-      200)
+    200)
   }
 
   private toggleMenu() {

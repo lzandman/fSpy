@@ -54,14 +54,14 @@ export default class CameraPresetForm extends React.PureComponent<CameraPresetFo
         <PanelSpacer />
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         Sensor <NumericInputField
-          isDisabled={presetId !== null}
-          value={sensorWidth}
-          onSubmit={(value: number) => { this.props.onSensorSizeChange(value, undefined) }} />
+            isDisabled={presetId !== null}
+            value={sensorWidth}
+            onSubmit={(value: number) => { this.props.onSensorSizeChange(value, undefined) }} />
         x
-        <NumericInputField
-          isDisabled={presetId !== null}
-          value={sensorHeight}
-          onSubmit={(value: number) => { this.props.onSensorSizeChange(undefined, value) }} /> {strings.unitMm}
+          <NumericInputField
+            isDisabled={presetId !== null}
+            value={sensorHeight}
+            onSubmit={(value: number) => { this.props.onSensorSizeChange(undefined, value) }} /> {strings.unitMm}
         </div>
         <PanelSpacer />
 

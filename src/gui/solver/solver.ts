@@ -76,7 +76,7 @@ export default class Solver {
       sensorWidth = preset.sensorWidth
       sensorHeight = preset.sensorHeight
     }
-    let relativeFocalLength = 0
+    let relativeFocalLength: number
     let sensorAspectRatio = sensorWidth / sensorHeight
     // TODO: verify factor 2
     if (sensorAspectRatio > 1) {
@@ -121,7 +121,7 @@ export default class Solver {
     }
 
     // Compute the horizon direction
-    let horizonDirection: Point2D = { x: 1, y: 0 } // flat by default
+    let horizonDirection: Point2D
 
     // Compute two points on the horizon line in image plane coordinates
     let horizonStart = CoordinatesUtil.convert(

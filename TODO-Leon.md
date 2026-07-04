@@ -11,8 +11,8 @@ Snapshot of `npm outdated` (as of 2026-07-04):
 | ~~cross-env~~ | ~~7.0.3~~ | 10.1.0 | ✅ #1 done |
 | ~~electron~~ | ~~42.6.0~~ | 43.0.0 | ✅ #1 done |
 | ~~jest / @types/jest~~ | ~~29.x~~ | 30.x | ✅ #1 done |
-| eslint | 8.57.1 | 10.6.0 | #2 eslint flat config |
-| @typescript-eslint/{eslint-plugin,parser} | 7.18.0 | 8.62.1 | #2 eslint flat config |
+| ~~eslint~~ | ~~8.57.1~~ | 10.6.0 | ✅ #2 done |
+| ~~@typescript-eslint/{eslint-plugin,parser}~~ | ~~7.18.0~~ | 8.62.1 | ✅ #2 done |
 | typescript | 5.9.3 | 6.0.3 | #3 typescript 6 |
 | react / react-dom | 18.3.1 | 19.2.7 | #4 react 19 |
 | @types/react / @types/react-dom | 18.x | 19.x | #4 react 19 |
@@ -43,23 +43,35 @@ Three unrelated single-package majors, bumped together:
 Verified: `tsc --noEmit` clean, `npm test` (175 pass), `npm start` (dev + HMR, renderer
 up), `npm run dist-preview` (packaged app launches with `example.fspy`), 0 audit vulns.
 
-## 2. ESLint 8 → 9/10 + typescript-eslint 7 → 8 (flat config)
+## 2. ✅ DONE — ESLint 8 → 9/10 + typescript-eslint 7 → 8 (flat config)
 
-Coupled: ESLint 9+ requires the flat-config format, so this replaces
-`.eslintrc.json` with `eslint.config.js` and bumps the TS plugin in the same step.
-ESLint 8 is end-of-life, so this is the highest-value modernization here.
+Coupled: ESLint 9+ requires the flat-config format, so this replaced
+`.eslintrc.json` with `eslint.config.mjs` and bumped the TS plugin in the same step.
+ESLint 8 was end-of-life, so this was the highest-value modernization here.
 
 * `npm i -D eslint@10 @typescript-eslint/eslint-plugin@8 @typescript-eslint/parser@8`
-  (`typescript-eslint@8` supports eslint `8.57 || 9 || 10`).
-* Migrate `.eslintrc.json` → `eslint.config.js` (flat config). Easiest path is the
-  `typescript-eslint` helper: `import tseslint from 'typescript-eslint'` and export
-  `tseslint.config(...)`. Port the existing rules/overrides across.
-* Add an `eslint .` (or `lint`) npm script — there currently isn't one.
-* While here, wire lint + typecheck + test into CI: the only workflows today are the
-  manual/`workflow_call` OS builds (`build-macos`, `build-windows`, `build-all`) and the
-  scheduled CodeQL scan. Add a `push` / `pull_request` job running
-  `npm ci && npx tsc --noEmit && npm test && npx eslint .` so regressions are caught per-PR.
-* Verify: `npx eslint .` runs clean (or with only expected findings).
+  plus `typescript-eslint@8` (flat-config helper) and the flat-config companions
+  `@eslint/js@10` + `globals` (neither ships transitively any more).
+* Migrated `.eslintrc.json` → `eslint.config.mjs` via `tseslint.config(...)`, extending
+  `js.configs.recommended` + `tseslint.configs.recommended`. `.mjs` because the package is
+  CommonJS (`"type"` unset) and the helper is ESM. Ported every rule/override across; `env`
+  became `languageOptions.globals` (browser+node from the `globals` pkg), `ignorePatterns`
+  became a global `ignores` block. `ban-types` was removed in typescript-eslint 8 and split
+  into `no-empty-object-type` / `no-unsafe-function-type` / `no-wrapper-object-types` — all
+  three left off to preserve the old `ban-types: off` surface.
+* The newer recommended presets added two rules that flagged real (trivial) dead code, fixed
+  in source rather than suppressed: `no-useless-assignment` (5× redundant initializers
+  overwritten on every path → typed bare `let` declarations) and `no-unused-expressions`
+  (a stray comma operator between two `gridLines3D.push(...)` calls → two statements).
+* Added a `lint` npm script (`eslint .`).
+* Added `.github/workflows/ci.yml` — a `push` / `pull_request` job running
+  `npm ci && npx tsc --noEmit && npm test && npx eslint .`.
+
+* Ran `eslint . --fix` to clear the 86 pre-existing `indent` warnings (whitespace-only
+  reindent across 7 files); `tsc --noEmit` + tests stay green after it.
+
+Verified from a clean `npm ci`: `tsc --noEmit` clean, `npm test` (175 pass), `npx eslint .`
+exits 0 with **no** remaining problems.
 
 ## 3. TypeScript 5.9 → 6.0
 
@@ -105,4 +117,4 @@ Steps:
   which also cleared the old `webpack-dev-server` audit findings.
 * Migrated tooling yarn → npm; removed the corrupted `yarn.lock`.
 * Added GitHub Actions OS-build workflows (`build-macos`, `build-windows`, `build-all`) and
-  the CodeQL scan. Still open: the per-PR lint/typecheck/test job (folded into #2 above).
+  the CodeQL scan. The per-PR lint/typecheck/test job (`ci.yml`) landed with #2.

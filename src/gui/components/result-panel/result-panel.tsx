@@ -175,35 +175,35 @@ export default class ResultPanel extends React.PureComponent<ResultPanelProps> {
 
     return (
       <div className='panel-section bottom-border'>
-          <div className='panel-group-title'>Camera orientation</div>
-          <Dropdown
-            options={[
-              { id: OrientationFormat.AxisAngleDegrees, title: 'Axis angle (degrees)', value: OrientationFormat.AxisAngleDegrees },
-              { id: OrientationFormat.AxisAngleRadians, title: 'Axis angle (radians)', value: OrientationFormat.AxisAngleRadians },
-              { id: OrientationFormat.Quaterion, title: 'Quaternion', value: OrientationFormat.Quaterion }
-            ]}
-            selectedOptionId={this.props.resultDisplaySettings.orientationFormat}
-            onOptionSelected={this.props.onOrientationDisplayFormatChanged}
-          />
-          <TableRow
-            isFirstRow={true}
-            title={'x'}
-            value={components[0]}
-          />
-          <TableRow
-            title={'y'}
-            value={components[1]}
-          />
-          <TableRow
-            title={'z'}
-            value={components[2]}
-          />
-          <TableRow
-            isLastRow={true}
-            title={displayAxisAngle ? 'Angle' : 'w'}
-            value={components[3]}
-          />
-        </div>
+        <div className='panel-group-title'>Camera orientation</div>
+        <Dropdown
+          options={[
+            { id: OrientationFormat.AxisAngleDegrees, title: 'Axis angle (degrees)', value: OrientationFormat.AxisAngleDegrees },
+            { id: OrientationFormat.AxisAngleRadians, title: 'Axis angle (radians)', value: OrientationFormat.AxisAngleRadians },
+            { id: OrientationFormat.Quaterion, title: 'Quaternion', value: OrientationFormat.Quaterion }
+          ]}
+          selectedOptionId={this.props.resultDisplaySettings.orientationFormat}
+          onOptionSelected={this.props.onOrientationDisplayFormatChanged}
+        />
+        <TableRow
+          isFirstRow={true}
+          title={'x'}
+          value={components[0]}
+        />
+        <TableRow
+          title={'y'}
+          value={components[1]}
+        />
+        <TableRow
+          title={'z'}
+          value={components[2]}
+        />
+        <TableRow
+          isLastRow={true}
+          title={displayAxisAngle ? 'Angle' : 'w'}
+          value={components[3]}
+        />
+      </div>
     )
   }
 
@@ -236,26 +236,26 @@ export default class ResultPanel extends React.PureComponent<ResultPanelProps> {
 
     return (
       <div className='panel-section bottom-border'>
-          <div className='panel-group-title'>Principal point</div>
-          <Dropdown
-            options={[
-              { id: PrincipalPointFormat.Absolute, title: 'Absolute', value: PrincipalPointFormat.Absolute },
-              { id: PrincipalPointFormat.Relative, title: 'Relative', value: PrincipalPointFormat.Relative }
-            ]}
-            selectedOptionId={this.props.resultDisplaySettings.principalPointFormat}
-            onOptionSelected={this.props.onPrincipalPointDisplayFormatChanged}
-          />
-          <TableRow
-            isFirstRow={true}
-            title={'x'}
-            value={displayPosition.x}
-          />
-          <TableRow
-            isLastRow={true}
-            title={'y'}
-            value={displayPosition.y}
-          />
-        </div>
+        <div className='panel-group-title'>Principal point</div>
+        <Dropdown
+          options={[
+            { id: PrincipalPointFormat.Absolute, title: 'Absolute', value: PrincipalPointFormat.Absolute },
+            { id: PrincipalPointFormat.Relative, title: 'Relative', value: PrincipalPointFormat.Relative }
+          ]}
+          selectedOptionId={this.props.resultDisplaySettings.principalPointFormat}
+          onOptionSelected={this.props.onPrincipalPointDisplayFormatChanged}
+        />
+        <TableRow
+          isFirstRow={true}
+          title={'x'}
+          value={displayPosition.x}
+        />
+        <TableRow
+          isLastRow={true}
+          title={'y'}
+          value={displayPosition.y}
+        />
+      </div>
     )
   }
 
@@ -278,7 +278,7 @@ export default class ResultPanel extends React.PureComponent<ResultPanelProps> {
       sensorHeight = preset.sensorHeight
     }
     let sensorAspectRatio = sensorHeight > 0 ? sensorWidth / sensorHeight : 1
-    let absoluteFocalLength = 0
+    let absoluteFocalLength: number
     if (sensorAspectRatio > 1) {
       // wide sensor.
       absoluteFocalLength = 0.5 * sensorWidth * cameraParameters.relativeFocalLength
@@ -316,14 +316,14 @@ export default class ResultPanel extends React.PureComponent<ResultPanelProps> {
   private renderCameraPresetForm(absoluteFocalLength: number, cameraData: CameraData) {
     return (
       <div style={{ marginTop: '5px' }}>
-      <CameraPresetForm
-            absoluteFocalLength={absoluteFocalLength}
-            cameraData={cameraData}
-            onCameraPresetChange={this.props.onCameraPresetChange}
-            onSensorSizeChange={this.props.onSensorSizeChange}
-          >
-        <TableRow value={absoluteFocalLength} title='Value (mm)' />
-      </CameraPresetForm>
+        <CameraPresetForm
+          absoluteFocalLength={absoluteFocalLength}
+          cameraData={cameraData}
+          onCameraPresetChange={this.props.onCameraPresetChange}
+          onSensorSizeChange={this.props.onSensorSizeChange}
+        >
+          <TableRow value={absoluteFocalLength} title='Value (mm)' />
+        </CameraPresetForm>
       </div>
     )
   }
