@@ -49,6 +49,8 @@
     "predist": "npm run build-dist",
     "predist-preview": "npm run build-dist",
     "dist-preview": "electron-builder --dir",
+    "predist-mac-unsigned": "npm run build-dist",
+    "dist-mac-unsigned": "cross-env CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder -m",
     "start": "npm run build-dev && concurrently -k -n dev-server,electron \"npm run dev-server\" \"wait-on http://localhost:8080 && npm run electron-dev\"",
     "dev-server": "webpack serve --config webpack.config.js --mode development",
     "electron-dev": "cross-env DEV=true ELECTRON_RUN_AS_NODE= electron ./build/main.js",
