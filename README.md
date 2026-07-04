@@ -35,9 +35,7 @@ To run the app in development mode, run
 npm start
 ```
 
-This builds the main, preload, and GUI code, starts the webpack dev server, and launches Electron once the dev server is ready. Changes to GUI (renderer) code reload automatically.
-
-⚠️ The build process lacks live reloading on main process code changes. Changes to `src/main` code require restarting `npm start` in order to show up in the app.
+This runs [electron-vite](https://electron-vite.org) in dev mode: it builds the main and preload code, serves the GUI (renderer) with Vite's dev server, and launches Electron. Changes to GUI (renderer) code hot-reload with Fast Refresh (component state is preserved); changes to `src/main` or `src/main/preload.ts` rebuild and restart Electron automatically.
 
 
 ## Creating binaries for distribution
@@ -63,15 +61,14 @@ All available scripts and when to use them:
 
 | Script | Description |
 | --- | --- |
-| `npm start` | Builds the app, starts the webpack dev server and launches Electron. Renderer (GUI) changes reload automatically; changes to `src/main` require a restart. This is the main development command. |
+| `npm start` | Runs `electron-vite dev`: builds main/preload, serves the renderer with HMR, and launches Electron. Renderer changes hot-reload with Fast Refresh; `src/main` changes rebuild and restart automatically. This is the main development command. |
 | `npm test` | Runs the [Jest](https://jestjs.io) test suite. |
 
 ### Building
 
 | Script | Description |
 | --- | --- |
-| `npm run build-dev` | Cleans `build/` and produces a development webpack bundle. Called by `npm start`; rarely run directly. |
-| `npm run build-dist` | Cleans `build/` and produces a production webpack bundle. Called automatically by every `dist-*` and `publish-release` script. |
+| `npm run build-dist` | Runs `electron-vite build`, producing the production bundles in `out/` (`main/`, `preload/`, `renderer/`). Called automatically by every `dist-*` and `publish-release` script. |
 
 ### Packaging (distribution)
 
@@ -88,5 +85,3 @@ All available scripts and when to use them:
 | Script | Description |
 | --- | --- |
 | `npm run publish-release` | Builds and publishes installers for all platforms to GitHub Releases (`electron-builder --publish always`). Intended to run from CI on per-OS runners. |
-
-The internal helper scripts `dev-server` and `electron-dev` are invoked by `npm start` and are not normally run on their own.

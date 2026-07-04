@@ -15,5 +15,12 @@
     "sourceMap": true,
     "skipLibCheck": true,
     "jsx": "react"
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "out",
+    "dist",
+    "build",
+    "electron.vite.config.ts"
+  ]
 }

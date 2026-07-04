@@ -143,8 +143,8 @@ function createWindow() {
     backgroundColor: Palette.imagePanelBackgroundColor,
     webPreferences: {
       // Allow loading local files in dev mode
-      webSecurity: process.env.DEV === undefined,
-      preload: path.join(__dirname, 'preload.js'),
+      webSecurity: app.isPackaged,
+      preload: path.join(__dirname, '../preload/preload.js'),
       nodeIntegration: false,
       contextIsolation: true,
       sandbox: true
@@ -298,7 +298,7 @@ function createWindow() {
   // Prevent following links, e.g when they are dropped
   // on the app window
   window.webContents.on('will-navigate', ev => {
-    if (process.env.DEV) {
+    if (!app.isPackaged) {
       // Allow this event in dev builds, since auto reload
       // relies on it
     } else {
@@ -358,19 +358,19 @@ function createWindow() {
       }
     }
 
-    if (process.env.DEV) {
+    if (!app.isPackaged) {
       // show dev tools
       window.webContents.openDevTools({ mode: 'bottom' })
     }
   })
 
-  const startUrl = pathToFileURL(path.join(__dirname, '../build/index.html')).href
+  // In dev, electron-vite injects ELECTRON_RENDERER_URL pointing at its dev server.
+  // In production, load the bundled renderer from the sibling out/renderer dir.
+  const loadPromise = process.env['ELECTRON_RENDERER_URL']
+    ? window.loadURL(process.env['ELECTRON_RENDERER_URL'])
+    : window.loadFile(path.join(__dirname, '../renderer/index.html'))
 
-  const devUrl = 'http://localhost:8080'
-
-  window.loadURL(
-    process.env.DEV ? devUrl : startUrl
-  ).then((_) => {
+  loadPromise.then((_) => {
     //
   }).catch((_) => {
     //

@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-fSpy is a cross-platform Electron 42 desktop application for camera matching from still images. It uses React 18, Konva 9 / react-konva 18 for canvas rendering, Redux 5 for state management, and Webpack 5 for bundling. TypeScript 5.9 with strict mode. Licensed under GPL-3.0.
+fSpy is a cross-platform Electron 42 desktop application for camera matching from still images. It uses React 18, Konva 9 / react-konva 18 for canvas rendering, Redux 5 for state management, and electron-vite (Vite 7) for bundling. TypeScript 5.9 with strict mode. Licensed under GPL-3.0.
 
 ## Architecture
 
@@ -11,7 +11,7 @@ fSpy is a cross-platform Electron 42 desktop application for camera matching fro
 - **Main process** (`src/main/index.ts`): Electron lifecycle, window management, IPC handlers, all file system access.
 - **Preload script** (`src/main/preload.ts`): Uses `contextBridge.exposeInMainWorld('electronAPI', ...)` to expose a typed API surface to the renderer. Kept minimal.
 - **Renderer** (`src/gui/`): React/Redux UI. Has **no** direct access to Node.js APIs or Electron internals — all system access goes through `window.electronAPI`.
-- **CLI** (`src/cli/cli.ts`): A headless mode for computing camera parameters without the GUI. It is not a separate binary — the Electron main process (`src/main/index.ts`) detects CLI arguments (`-w`, `-h`, `-s`, `-o`, `--help`) on launch and calls `CLI.run()` instead of creating a window, then exits. It reuses the solver and I/O code from `src/gui/` (e.g. `src/gui/solver/`, `src/gui/io/`) and is bundled into the `main` webpack bundle via that import.
+- **CLI** (`src/cli/cli.ts`): A headless mode for computing camera parameters without the GUI. It is not a separate binary — the Electron main process (`src/main/index.ts`) detects CLI arguments (`-w`, `-h`, `-s`, `-o`, `--help`) on launch and calls `CLI.run()` instead of creating a window, then exits. It reuses the solver and I/O code from `src/gui/` (e.g. `src/gui/solver/`, `src/gui/io/`) and is bundled into the `main` bundle via that import.
 
 ### Security model
 
@@ -22,10 +22,12 @@ fSpy is a cross-platform Electron 42 desktop application for camera matching fro
 
 ### Build targets
 
-Webpack produces three bundles (see `webpack.config.js`):
-1. `main` — target `electron-main`
-2. `gui` — target `web` (renderer, no Node.js externals)
-3. `preload` — target `electron-preload`
+electron-vite builds three targets from `electron.vite.config.ts` into `out/`:
+1. `main` — `src/main/index.ts` → `out/main/index.js` (Node deps kept external via `externalizeDepsPlugin`)
+2. `renderer` — `src/gui/index.html` → `out/renderer/` (browser context, no Node.js access)
+3. `preload` — `src/main/preload.ts` → `out/preload/preload.js` (CommonJS, required by `sandbox: true`)
+
+In dev, `npm start` runs `electron-vite dev`: the renderer is served with HMR/Fast Refresh and `main`/`preload` are rebuilt and the app restarted on change. The main process picks dev vs. production from `app.isPackaged` and loads the renderer from `process.env.ELECTRON_RENDERER_URL` (dev) or the bundled `out/renderer/index.html` (packaged).
 
 ## Code Style
 
