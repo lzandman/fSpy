@@ -42,22 +42,18 @@
     "webpack-dev-server": "^5.2.3"
   },
   "scripts": {
-    "prebuild-dev": "rimraf build",
-    "build-dev": "webpack --config webpack.config.js --mode development",
-    "prebuild-dist": "rimraf build",
-    "build-dist": "webpack --config webpack.config.js --mode production",
-    "predist": "npm run build-dist",
-    "predist-preview": "npm run build-dist",
-    "dist-preview": "electron-builder --dir",
-    "predist-mac-unsigned": "npm run build-dist",
-    "dist-mac-unsigned": "cross-env CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder -m",
     "start": "npm run build-dev && concurrently -k -n dev-server,electron \"npm run dev-server\" \"wait-on http://localhost:8080 && npm run electron-dev\"",
     "dev-server": "webpack serve --config webpack.config.js --mode development",
     "electron-dev": "cross-env DEV=true ELECTRON_RUN_AS_NODE= electron ./build/main.js",
-    "dist": "electron-builder -mwl",
+    "build-dev": "rimraf build && webpack --config webpack.config.js --mode development",
+    "build-dist": "rimraf build && webpack --config webpack.config.js --mode production",
     "test": "jest",
-    "prepublish-release": "npm run build-dist",
-    "publish-release": "electron-builder -mwl --publish always"
+    "dist-preview": "npm run build-dist && electron-builder --dir",
+    "dist": "npm run build-dist && electron-builder -mwl",
+    "dist-mac": "npm run build-dist && cross-env CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder -m",
+    "dist-win": "npm run build-dist && electron-builder -w",
+    "dist-linux": "npm run build-dist && electron-builder -l",
+    "publish-release": "npm run build-dist && electron-builder -mwl --publish always"
   },
   "dependencies": {
     "electron-window-state": "^5.0.3",
