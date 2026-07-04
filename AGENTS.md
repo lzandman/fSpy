@@ -52,7 +52,7 @@ In dev, `npm start` runs `electron-vite dev`: the renderer is served with HMR/Fa
 
 ## Testing
 
-- Tests live in `tests/` and run via Jest 29 + ts-jest. Config in `jest.config.js`.
+- Tests live in `tests/` and run via Jest 30 + ts-jest. Config in `jest.config.js`.
 - Run: `npm test`.
 - Test with the `.fspy` files in `test_data/` to verify project file compatibility.
 

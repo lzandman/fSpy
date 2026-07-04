@@ -1,0 +1,1319 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Solver output is stable (snapshot regression) 1 vp control test.fspy produces stable solver output 1`] = `
+{
+  "cameraParameters": {
+    "cameraTransform": {
+      "rows": [
+        [
+          0.486518,
+          -0.25826,
+          0.834627,
+          8.448069,
+        ],
+        [
+          -0.130644,
+          0.923064,
+          0.36178,
+          4.178987,
+        ],
+        [
+          -0.863847,
+          -0.285051,
+          0.415348,
+          3.460098,
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+        ],
+      ],
+    },
+    "horizontalFieldOfView": 0.394791,
+    "imageHeight": 364,
+    "imageWidth": 400,
+    "principalPoint": {
+      "x": 0,
+      "y": 0,
+    },
+    "relativeFocalLength": 5,
+    "vanishingPointAxes": [
+      "xNegative",
+      "zNegative",
+      "yNegative",
+    ],
+    "vanishingPoints": [
+      {
+        "x": -2.914588,
+        "y": 1.547159,
+      },
+      {
+        "x": 10.399082,
+        "y": 3.431476,
+      },
+      {
+        "x": 1.805567,
+        "y": -12.757264,
+      },
+    ],
+    "verticalFieldOfView": 0.360059,
+    "viewTransform": {
+      "rows": [
+        [
+          0.486518,
+          -0.130644,
+          -0.863847,
+          -0.575188,
+        ],
+        [
+          -0.25826,
+          0.923064,
+          -0.285051,
+          -0.68937,
+        ],
+        [
+          0.834627,
+          0.36178,
+          0.415348,
+          -10,
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+        ],
+      ],
+    },
+  },
+  "errors": [],
+  "warnings": [
+    "Image/sensor proportions mismatch",
+  ],
+}
+`;
+
+exports[`Solver output is stable (snapshot regression) canon5d_16mm.fspy produces stable solver output 1`] = `
+{
+  "cameraParameters": {
+    "cameraTransform": {
+      "rows": [
+        [
+          0.817948,
+          0.30514,
+          0.4877,
+          17.268318,
+        ],
+        [
+          0.575287,
+          -0.437712,
+          -0.69098,
+          -42.455601,
+        ],
+        [
+          0.002627,
+          0.845752,
+          -0.533569,
+          -3.69586,
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+        ],
+      ],
+    },
+    "horizontalFieldOfView": 1.688308,
+    "imageHeight": 2912,
+    "imageWidth": 4368,
+    "principalPoint": {
+      "x": 0,
+      "y": 0,
+    },
+    "relativeFocalLength": 0.888889,
+    "vanishingPointAxes": [
+      "xNegative",
+      "yPositive",
+      "zNegative",
+    ],
+    "vanishingPoints": [
+      {
+        "x": -1.490803,
+        "y": -0.556153,
+      },
+      {
+        "x": 0.74006,
+        "y": -0.563081,
+      },
+      {
+        "x": 0.004376,
+        "y": 1.408965,
+      },
+    ],
+    "verticalFieldOfView": 1.287002,
+    "viewTransform": {
+      "rows": [
+        [
+          0.817948,
+          0.575287,
+          0.002627,
+          10.309278,
+        ],
+        [
+          0.30514,
+          -0.437712,
+          0.845752,
+          -20.72682,
+        ],
+        [
+          0.4877,
+          -0.69098,
+          -0.533569,
+          -39.729711,
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+        ],
+      ],
+    },
+  },
+  "errors": [],
+  "warnings": [],
+}
+`;
+
+exports[`Solver output is stable (snapshot regression) canoneos60d_24mm.fspy produces stable solver output 1`] = `
+{
+  "cameraParameters": {
+    "cameraTransform": {
+      "rows": [
+        [
+          0.408321,
+          0.430249,
+          -0.805083,
+          -8.223194,
+        ],
+        [
+          -0.91282,
+          0.197998,
+          -0.35715,
+          -5.472381,
+        ],
+        [
+          0.005741,
+          0.880728,
+          0.473587,
+          3.009337,
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+        ],
+      ],
+    },
+    "horizontalFieldOfView": 0.86983,
+    "imageHeight": 3456,
+    "imageWidth": 5184,
+    "principalPoint": {
+      "x": 0,
+      "y": 0,
+    },
+    "relativeFocalLength": 2.152466,
+    "vanishingPointAxes": [
+      "xPositive",
+      "yPositive",
+      "zPositive",
+    ],
+    "vanishingPoints": [
+      {
+        "x": 1.091685,
+        "y": 1.150312,
+      },
+      {
+        "x": -5.501376,
+        "y": 1.193292,
+      },
+      {
+        "x": -0.026095,
+        "y": -4.002935,
+      },
+    ],
+    "verticalFieldOfView": 0.600704,
+    "viewTransform": {
+      "rows": [
+        [
+          0.408321,
+          -0.91282,
+          0.005741,
+          -1.654874,
+        ],
+        [
+          0.430249,
+          0.197998,
+          0.880728,
+          1.971136,
+        ],
+        [
+          -0.805083,
+          -0.35715,
+          0.473587,
+          -10,
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+        ],
+      ],
+    },
+  },
+  "errors": [],
+  "warnings": [],
+}
+`;
+
+exports[`Solver output is stable (snapshot regression) defaults.fspy produces stable solver output 1`] = `
+{
+  "cameraParameters": {
+    "cameraTransform": {
+      "rows": [
+        [
+          0.720814,
+          0.361369,
+          -0.591473,
+          -7.495478,
+        ],
+        [
+          -0.693112,
+          0.381804,
+          -0.61141,
+          -5.498093,
+        ],
+        [
+          0.004882,
+          0.850669,
+          0.525678,
+          4.194655,
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+        ],
+      ],
+    },
+    "horizontalFieldOfView": 1.307765,
+    "imageHeight": 577,
+    "imageWidth": 993,
+    "principalPoint": {
+      "x": 0,
+      "y": 0,
+    },
+    "relativeFocalLength": 1.304889,
+    "vanishingPointAxes": [
+      "xPositive",
+      "yPositive",
+      "zPositive",
+    ],
+    "vanishingPoints": [
+      {
+        "x": 1.590238,
+        "y": 0.797241,
+      },
+      {
+        "x": -1.479259,
+        "y": 0.814856,
+      },
+      {
+        "x": -0.012118,
+        "y": -2.111614,
+      },
+    ],
+    "verticalFieldOfView": 0.837877,
+    "viewTransform": {
+      "rows": [
+        [
+          0.720814,
+          -0.693112,
+          0.004882,
+          1.571575,
+        ],
+        [
+          0.361369,
+          0.381804,
+          0.850669,
+          1.239559,
+        ],
+        [
+          -0.591473,
+          -0.61141,
+          0.525678,
+          -10,
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+        ],
+      ],
+    },
+  },
+  "errors": [],
+  "warnings": [],
+}
+`;
+
+exports[`Solver output is stable (snapshot regression) iphone6plus.fspy produces stable solver output 1`] = `
+{
+  "cameraParameters": {
+    "cameraTransform": {
+      "rows": [
+        [
+          -0.687916,
+          -0.305777,
+          -0.658234,
+          -16.100269,
+        ],
+        [
+          -0.725453,
+          0.262059,
+          0.63643,
+          15.491303,
+        ],
+        [
+          -0.022109,
+          0.915328,
+          -0.402102,
+          -8.375016,
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+        ],
+      ],
+    },
+    "horizontalFieldOfView": 1.048641,
+    "imageHeight": 3024,
+    "imageWidth": 4032,
+    "principalPoint": {
+      "x": 0,
+      "y": 0,
+    },
+    "relativeFocalLength": 1.729167,
+    "vanishingPointAxes": [
+      "xPositive",
+      "yNegative",
+      "zNegative",
+    ],
+    "vanishingPoints": [
+      {
+        "x": -1.807143,
+        "y": -0.80327,
+      },
+      {
+        "x": 1.971041,
+        "y": -0.712009,
+      },
+      {
+        "x": -0.095077,
+        "y": 3.936207,
+      },
+    ],
+    "verticalFieldOfView": 0.818492,
+    "viewTransform": {
+      "rows": [
+        [
+          -0.687916,
+          -0.725453,
+          -0.022109,
+          -0.022593,
+        ],
+        [
+          -0.305777,
+          0.262059,
+          0.915328,
+          -1.31684,
+        ],
+        [
+          -0.658234,
+          0.63643,
+          -0.402102,
+          -23.824471,
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+        ],
+      ],
+    },
+  },
+  "errors": [],
+  "warnings": [],
+}
+`;
+
+exports[`Solver output is stable (snapshot regression) missing horizon.fspy produces stable solver output 1`] = `
+{
+  "cameraParameters": {
+    "cameraTransform": {
+      "rows": [
+        [
+          0.000028,
+          0.002082,
+          -0.999998,
+          -1611.610028,
+        ],
+        [
+          -0.999994,
+          -0.003422,
+          -0.000035,
+          12.26896,
+        ],
+        [
+          -0.003422,
+          0.999992,
+          0.002082,
+          -39.150146,
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+        ],
+      ],
+    },
+    "horizontalFieldOfView": 0.394791,
+    "imageHeight": 854,
+    "imageWidth": 640,
+    "principalPoint": {
+      "x": 0,
+      "y": 0,
+    },
+    "relativeFocalLength": 5,
+    "vanishingPointAxes": [
+      "xPositive",
+      "yPositive",
+      "zPositive",
+    ],
+    "vanishingPoints": [
+      {
+        "x": 0.000142,
+        "y": 0.010412,
+      },
+      {
+        "x": -140994.811517,
+        "y": -482.522236,
+      },
+      {
+        "x": 8.217701,
+        "y": -2401.191433,
+      },
+    ],
+    "verticalFieldOfView": 0.521594,
+    "viewTransform": {
+      "rows": [
+        [
+          0.000028,
+          -0.999994,
+          -0.003422,
+          12.18057,
+        ],
+        [
+          0.002082,
+          -0.003422,
+          0.999992,
+          42.547823,
+        ],
+        [
+          -0.999998,
+          -0.000035,
+          0.002082,
+          -1611.524576,
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+        ],
+      ],
+    },
+  },
+  "errors": [],
+  "warnings": [
+    "Image/sensor proportions mismatch",
+  ],
+}
+`;
+
+exports[`Solver output is stable (snapshot regression) pp problem landscape.fspy produces stable solver output 1`] = `
+{
+  "cameraParameters": {
+    "cameraTransform": {
+      "rows": [
+        [
+          0.043175,
+          0.81644,
+          -0.575813,
+          -5.803836,
+        ],
+        [
+          -0.999051,
+          0.031949,
+          -0.02961,
+          8.35186,
+        ],
+        [
+          -0.005779,
+          0.576545,
+          0.817045,
+          8.451649,
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+        ],
+      ],
+    },
+    "horizontalFieldOfView": 2.538367,
+    "imageHeight": 213,
+    "imageWidth": 320,
+    "principalPoint": {
+      "x": 0.208889,
+      "y": -0.291111,
+    },
+    "relativeFocalLength": 0.311104,
+    "vanishingPointAxes": [
+      "xPositive",
+      "yPositive",
+      "zPositive",
+    ],
+    "vanishingPoints": [
+      {
+        "x": 0.232216,
+        "y": 0.150001,
+      },
+      {
+        "x": -10.287717,
+        "y": 0.044562,
+      },
+      {
+        "x": 0.211089,
+        "y": -0.510641,
+      },
+    ],
+    "verticalFieldOfView": 2.267156,
+    "viewTransform": {
+      "rows": [
+        [
+          0.043175,
+          -0.999051,
+          -0.005779,
+          8.643354,
+        ],
+        [
+          0.81644,
+          0.031949,
+          0.576545,
+          -0.401101,
+        ],
+        [
+          -0.575813,
+          -0.02961,
+          0.817045,
+          -10,
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+        ],
+      ],
+    },
+  },
+  "errors": [],
+  "warnings": [],
+}
+`;
+
+exports[`Solver output is stable (snapshot regression) pp problem.fspy produces stable solver output 1`] = `
+{
+  "cameraParameters": null,
+  "errors": [
+    "Invalid vanishing point configuration. Rotation determinant 0.91824",
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`Solver output is stable (snapshot regression) quad-problem.fspy produces stable solver output 1`] = `
+{
+  "cameraParameters": {
+    "cameraTransform": {
+      "rows": [
+        [
+          -0.295286,
+          0.006564,
+          -0.955386,
+          -25.238294,
+        ],
+        [
+          0.955395,
+          -0.003425,
+          -0.295312,
+          2.277374,
+        ],
+        [
+          -0.005211,
+          -0.999973,
+          -0.005259,
+          4.059948,
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+        ],
+      ],
+    },
+    "horizontalFieldOfView": 1.03151,
+    "imageHeight": 768,
+    "imageWidth": 1024,
+    "principalPoint": {
+      "x": 0,
+      "y": 0,
+    },
+    "relativeFocalLength": 1.763858,
+    "vanishingPointAxes": [
+      "xPositive",
+      "yPositive",
+      "zPositive",
+    ],
+    "vanishingPoints": [
+      {
+        "x": -0.545165,
+        "y": 0.012118,
+      },
+      {
+        "x": 5.706434,
+        "y": -0.020459,
+      },
+      {
+        "x": -1.74755,
+        "y": -335.358036,
+      },
+    ],
+    "verticalFieldOfView": 0.804087,
+    "viewTransform": {
+      "rows": [
+        [
+          -0.295286,
+          0.955395,
+          -0.005211,
+          -9.607157,
+        ],
+        [
+          0.006564,
+          -0.003425,
+          -0.999973,
+          4.233294,
+        ],
+        [
+          -0.955386,
+          -0.295312,
+          -0.005259,
+          -23.41843,
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+        ],
+      ],
+    },
+  },
+  "errors": [],
+  "warnings": [],
+}
+`;
+
+exports[`Solver output is stable (snapshot regression) quad-problem-2 copy.fspy produces stable solver output 1`] = `
+{
+  "cameraParameters": {
+    "cameraTransform": {
+      "rows": [
+        [
+          0.710056,
+          0.029098,
+          -0.703544,
+          -134.521467,
+        ],
+        [
+          -0.704136,
+          0.034547,
+          -0.709224,
+          7.076599,
+        ],
+        [
+          0.003668,
+          0.998979,
+          0.045019,
+          -4.11194,
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+        ],
+      ],
+    },
+    "horizontalFieldOfView": 2.107491,
+    "imageHeight": 590,
+    "imageWidth": 1051,
+    "principalPoint": {
+      "x": 0,
+      "y": 0,
+    },
+    "relativeFocalLength": 0.568653,
+    "vanishingPointAxes": [
+      "xPositive",
+      "yPositive",
+      "zPositive",
+    ],
+    "vanishingPoints": [
+      {
+        "x": 0.573916,
+        "y": 0.023519,
+      },
+      {
+        "x": -0.564573,
+        "y": 0.027699,
+      },
+      {
+        "x": -0.046337,
+        "y": -12.61856,
+      },
+    ],
+    "verticalFieldOfView": 1.557908,
+    "viewTransform": {
+      "rows": [
+        [
+          0.710056,
+          -0.704136,
+          0.003668,
+          100.51569,
+        ],
+        [
+          0.029098,
+          0.034547,
+          0.998979,
+          7.777529,
+        ],
+        [
+          -0.703544,
+          -0.709224,
+          0.045019,
+          -89.437786,
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+        ],
+      ],
+    },
+  },
+  "errors": [],
+  "warnings": [],
+}
+`;
+
+exports[`Solver output is stable (snapshot regression) quad-problem-2.fspy produces stable solver output 1`] = `
+{
+  "cameraParameters": {
+    "cameraTransform": {
+      "rows": [
+        [
+          0.29379,
+          -0.006033,
+          0.955851,
+          2.86819,
+        ],
+        [
+          0.955867,
+          -0.000827,
+          -0.2938,
+          -0.179431,
+        ],
+        [
+          0.002563,
+          0.999981,
+          0.005523,
+          1.181098,
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+        ],
+      ],
+    },
+    "horizontalFieldOfView": 1.011955,
+    "imageHeight": 768,
+    "imageWidth": 1024,
+    "principalPoint": {
+      "x": 0,
+      "y": 0,
+    },
+    "relativeFocalLength": 1.804762,
+    "vanishingPointAxes": [
+      "xNegative",
+      "yPositive",
+      "zNegative",
+    ],
+    "vanishingPoints": [
+      {
+        "x": -0.554711,
+        "y": 0.01139,
+      },
+      {
+        "x": 5.871721,
+        "y": -0.005083,
+      },
+      {
+        "x": -0.83756,
+        "y": -326.745023,
+      },
+    ],
+    "verticalFieldOfView": 0.787708,
+    "viewTransform": {
+      "rows": [
+        [
+          0.29379,
+          0.955867,
+          0.002563,
+          -0.674161,
+        ],
+        [
+          -0.006033,
+          -0.000827,
+          0.999981,
+          -1.163922,
+        ],
+        [
+          0.955851,
+          -0.2938,
+          0.005523,
+          -2.800803,
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+        ],
+      ],
+    },
+  },
+  "errors": [],
+  "warnings": [],
+}
+`;
+
+exports[`Solver output is stable (snapshot regression) quad-problem-3.fspy produces stable solver output 1`] = `
+{
+  "cameraParameters": {
+    "cameraTransform": {
+      "rows": [
+        [
+          0.710056,
+          0.029098,
+          -0.703544,
+          14.308068,
+        ],
+        [
+          -0.704136,
+          0.034547,
+          -0.709224,
+          -237.228589,
+        ],
+        [
+          0.003668,
+          0.998979,
+          0.045019,
+          -9.592,
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+        ],
+      ],
+    },
+    "horizontalFieldOfView": 2.107491,
+    "imageHeight": 590,
+    "imageWidth": 1051,
+    "principalPoint": {
+      "x": 0,
+      "y": 0,
+    },
+    "relativeFocalLength": 0.568653,
+    "vanishingPointAxes": [
+      "xPositive",
+      "yPositive",
+      "zPositive",
+    ],
+    "vanishingPoints": [
+      {
+        "x": 0.573916,
+        "y": 0.023519,
+      },
+      {
+        "x": -0.564573,
+        "y": 0.027699,
+      },
+      {
+        "x": -0.046337,
+        "y": -12.61856,
+      },
+    ],
+    "verticalFieldOfView": 1.557908,
+    "viewTransform": {
+      "rows": [
+        [
+          0.710056,
+          -0.704136,
+          0.003668,
+          -177.165546,
+        ],
+        [
+          0.029098,
+          0.034547,
+          0.998979,
+          17.361343,
+        ],
+        [
+          -0.703544,
+          -0.709224,
+          0.045019,
+          -157.750067,
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+        ],
+      ],
+    },
+  },
+  "errors": [],
+  "warnings": [],
+}
+`;
+
+exports[`Solver output is stable (snapshot regression) quad-problem-4.fspy produces stable solver output 1`] = `
+{
+  "cameraParameters": {
+    "cameraTransform": {
+      "rows": [
+        [
+          0.710056,
+          0.029098,
+          -0.703544,
+          1.734866,
+        ],
+        [
+          -0.704136,
+          0.034547,
+          -0.709224,
+          -23.055993,
+        ],
+        [
+          0.003668,
+          0.998979,
+          0.045019,
+          -6.646759,
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+        ],
+      ],
+    },
+    "horizontalFieldOfView": 2.107491,
+    "imageHeight": 590,
+    "imageWidth": 1051,
+    "principalPoint": {
+      "x": 0,
+      "y": 0,
+    },
+    "relativeFocalLength": 0.568653,
+    "vanishingPointAxes": [
+      "xPositive",
+      "yPositive",
+      "zPositive",
+    ],
+    "vanishingPoints": [
+      {
+        "x": 0.573916,
+        "y": 0.023519,
+      },
+      {
+        "x": -0.564573,
+        "y": 0.027699,
+      },
+      {
+        "x": -0.046337,
+        "y": -12.61856,
+      },
+    ],
+    "verticalFieldOfView": 1.557908,
+    "viewTransform": {
+      "rows": [
+        [
+          0.710056,
+          -0.704136,
+          0.003668,
+          -17.442025,
+        ],
+        [
+          0.029098,
+          0.034547,
+          0.998979,
+          7.386003,
+        ],
+        [
+          -0.703544,
+          -0.709224,
+          0.045019,
+          -14.832083,
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+        ],
+      ],
+    },
+  },
+  "errors": [],
+  "warnings": [],
+}
+`;
+
+exports[`Solver output is stable (snapshot regression) ref_distance_in_yards.fspy produces stable solver output 1`] = `
+{
+  "cameraParameters": {
+    "cameraTransform": {
+      "rows": [
+        [
+          0.911655,
+          -0.196332,
+          0.361025,
+          92.842012,
+        ],
+        [
+          0.41095,
+          0.440497,
+          -0.798175,
+          -132.647033,
+        ],
+        [
+          -0.002323,
+          0.876023,
+          0.482264,
+          70.192882,
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+        ],
+      ],
+    },
+    "horizontalFieldOfView": 0.809875,
+    "imageHeight": 3456,
+    "imageWidth": 5184,
+    "principalPoint": {
+      "x": 0,
+      "y": 0,
+    },
+    "relativeFocalLength": 2.33304,
+    "vanishingPointAxes": [
+      "xNegative",
+      "zNegative",
+      "yNegative",
+    ],
+    "vanishingPoints": [
+      {
+        "x": -5.891365,
+        "y": 1.268753,
+      },
+      {
+        "x": 0.011238,
+        "y": -4.23792,
+      },
+      {
+        "x": 1.201194,
+        "y": 1.28756,
+      },
+    ],
+    "verticalFieldOfView": 0.556666,
+    "viewTransform": {
+      "rows": [
+        [
+          0.911655,
+          0.41095,
+          -0.002323,
+          -29.965567,
+        ],
+        [
+          -0.196332,
+          0.440497,
+          0.876023,
+          15.167944,
+        ],
+        [
+          0.361025,
+          -0.798175,
+          0.482264,
+          -173.245241,
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+        ],
+      ],
+    },
+  },
+  "errors": [],
+  "warnings": [],
+}
+`;
+
+exports[`Solver output is stable (snapshot regression) reference distance problem.fspy produces stable solver output 1`] = `
+{
+  "cameraParameters": {
+    "cameraTransform": {
+      "rows": [
+        [
+          0.001962,
+          -0.002673,
+          -0.999995,
+          -0.528071,
+        ],
+        [
+          0.00392,
+          0.999989,
+          -0.002665,
+          0.045604,
+        ],
+        [
+          0.99999,
+          -0.003915,
+          0.001972,
+          0.048676,
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+        ],
+      ],
+    },
+    "horizontalFieldOfView": 0.394791,
+    "imageHeight": 1328,
+    "imageWidth": 1999,
+    "principalPoint": {
+      "x": 0,
+      "y": 0,
+    },
+    "relativeFocalLength": 5,
+    "vanishingPointAxes": [
+      "xPositive",
+      "zNegative",
+      "yPositive",
+    ],
+    "vanishingPoints": [
+      {
+        "x": 0.009808,
+        "y": -0.013363,
+      },
+      {
+        "x": -2535.451551,
+        "y": 9.926346,
+      },
+      {
+        "x": 7.3552,
+        "y": 1876.194275,
+      },
+    ],
+    "verticalFieldOfView": 0.264186,
+    "viewTransform": {
+      "rows": [
+        [
+          0.001962,
+          0.00392,
+          0.99999,
+          -0.047818,
+        ],
+        [
+          -0.002673,
+          0.999989,
+          -0.003915,
+          -0.046824,
+        ],
+        [
+          -0.999995,
+          -0.002665,
+          0.001972,
+          -0.528042,
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+        ],
+      ],
+    },
+  },
+  "errors": [],
+  "warnings": [
+    "Image/sensor proportions mismatch",
+  ],
+}
+`;
